@@ -2,11 +2,30 @@
 
 {% block content %} 
 
-<h1>MULTIPLE projects</h1>
-<ul>
+<h3><a href="{% url 'createProject' %}">Create project</a></h3>
+
+<h1>ALL projects</h1>
+<table>
+    <tr>
+        <th>Project Name</th>
+        <th>Created</th>
+        <th></th>
+        <th></th>
+        <th></th>
+    </tr>
     {% for project in projects %} 
-    <li><a href="{% url 'project' project.id %}">{{project.title}}</a></li>
+    <tr>
+        <td>{{project.title}}</td>
+        <td>{{project.created}}</td>
+        <td><a href="{% url 'project' project.id %}">View</a></td>
+        <td><a href="{% url 'editProject' project.id %}">Edit</a></td>
+        <td><a href="{% url 'deleteProject' project.id %}">Delete</a></td>
+    </tr>
     {% endfor %}
+    
+</table>
+<ul>
+    
 </ul>
 
 
